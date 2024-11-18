@@ -11,16 +11,24 @@ import SelectRole from '../ui/SelectRole';
 import UserService from '@/services/UserService';
 import { toast } from 'react-toastify';
 import SelectFac from '../ui/SelectFac';
+import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+
 
 
 export default function CreateUser() {
   
+const router = useRouter();
+
+
   const onSubmit = (e)=>{
     e.preventDefault()
     const formdata= new FormData(e.target)
     UserService.createUser(formdata).then(x=>{
-      toast.success('add success')
       
+      toast.success('add success')
+      router.push('/admin/user');
+
     }).catch(err=>{
       toast.error('add failed')
     })

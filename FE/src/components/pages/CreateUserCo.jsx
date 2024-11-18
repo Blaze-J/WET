@@ -12,15 +12,19 @@ import UserService from '@/services/UserService';
 import { toast } from 'react-toastify';
 import SelectFac from '../ui/SelectFac';
 import SelectRoleCo from '../ui/SelectRoleCo';
+import { useRouter } from 'next/navigation';
 
 
 export default function CreateUserCo() {
-  
+  const router = useRouter();
+
   const onSubmit = (e)=>{
     e.preventDefault()
     const formdata= new FormData(e.target)
     UserService.createUser(formdata).then(x=>{
       toast.success('add success')
+      router.push('/coordinator/user');
+
       
     }).catch(err=>{
       toast.error('add failed')

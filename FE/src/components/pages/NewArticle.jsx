@@ -62,7 +62,7 @@ export default function NewArticle({ id }) {
         formData.map((x,i)=>{
             formdata.append(`file`,x.file)
         })
-        SubmissionService.createSubmission(formdata).then(x => { toast.success(`add success`); router.push(`/Student/DetailArticle/${id}`) }).catch(e => {
+        SubmissionService.createSubmission(formdata).then(x => { toast.success(`add success`); router.push(`/Student/DetailArticle/${deadline?.contributionId}`) }).catch(e => {
             console.log(e)
             toast.error(`add failed`)
         })

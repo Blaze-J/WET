@@ -15,17 +15,22 @@ import FacultyService from '@/services/FacultyService';
 import ContributionService from '@/services/ContributionService';
 import SelectFac from '../ui/SelectFac';
 import AcademicyearService from '@/services/AcademicyearService';
+import { useRouter } from 'next/navigation';
 
 
 export default function CreateAcademicyear() {
+  const router = useRouter();
 
   const onSubmit = (e) => {
     e.preventDefault()
     const formdata = new FormData(e.target)
     AcademicyearService.createAcademicyear(formdata).then(x => {
       toast.success('add success')
+      router.push('/admin/academicyear');
+
     }).catch(err => {
       toast.error('add failed')
+      
     })
   }
 

@@ -13,15 +13,19 @@ import { toast } from 'react-toastify';
 import SelectMc from '../ui/SelectMc';
 
 import DeadlineService from '@/services/DeadlineService';
+import { useRouter } from 'next/navigation';
 
 
 export default function CreateDeadline({id}) {
+  const router = useRouter();
 
   const onSubmit = (e) => {
     e.preventDefault()
     const formdata = new FormData(e.target)
     DeadlineService.createDeadline(formdata).then(x => {
       toast.success('add success')
+      router.push('/coordinator/index');
+
 
     }).catch(err => {
       toast.error('add failed')

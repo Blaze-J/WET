@@ -16,15 +16,20 @@ import ContributionService from '@/services/ContributionService';
 import SelectFac from '../ui/SelectFac';
 import SelectAcadmicyear from '../ui/SelectAcadmicyear';
 import SelectStatus from '../ui/SelectStatus';
+import { useRouter } from 'next/navigation';
 
 
 export default function CreateContribution() {
+  const router = useRouter();
 
   const onSubmit = (e) => {
     e.preventDefault()
     const formdata = new FormData(e.target)
     ContributionService.createContribution(formdata).then(x => {
+      
       toast.success('add success')
+      router.push('/admin/contribution');
+
     }).catch(err => {
       toast.error('add failed')
     })

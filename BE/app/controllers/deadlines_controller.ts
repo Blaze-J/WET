@@ -1,5 +1,5 @@
  import Deadline from '#models/deadline'
-import { PostDeadlineForm } from '#validators/deadline'
+import { PostDeadlineForm, PutDeadlineForm } from '#validators/deadline'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class DeadlinesController {

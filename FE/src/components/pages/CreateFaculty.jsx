@@ -12,15 +12,19 @@ import UserService from '@/services/UserService';
 import { toast } from 'react-toastify';
 import SelectMc from '../ui/SelectMc';
 import FacultyService from '@/services/FacultyService';
+import { useRouter } from 'next/navigation';
 
 
 export default function CreateFaculty() {
+  const router = useRouter();
 
   const onSubmit = (e) => {
     e.preventDefault()
     const formdata = new FormData(e.target)
     FacultyService.createFaculty(formdata).then(x => {
       toast.success('add success')
+      router.push('/admin/faculty');
+
 
     }).catch(err => {
       toast.error('add failed')

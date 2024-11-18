@@ -42,7 +42,7 @@ export default function UpdateDeadline({ id }) {
   if (!deadline) return
   return (
     <form onSubmit={onSubmit} className='mx-[200px]'>
-      <input type="hidden" name="contributionid" value={id} />
+      <input type="hidden" name="contributionid" value={deadline?.contributionId} />
       <Grid container spacing={3} >
         <Grid item xs={12} md={6} className='flex !flex-col' >
           <FormLabel htmlFor="name" required>
